@@ -34,16 +34,22 @@ public class CooperGame extends BasicGame
     @Override
     public void init(GameContainer container) throws SlickException
     {
-      inputController = new InputController();
-      player = new Player(3, 3);
+      player = new Player(50, 656);
+      inputController = new InputController(player);
     }
 
     @Override
     public void update(GameContainer container, int delta) throws SlickException
     {
+      player.checkTouchingGround();
+      inputController.handleKeyboardInput(container.getInput(), delta);
+      player.insertGravity(delta);
+      player.checkCollision();
     }
 
     public void render(GameContainer container, Graphics g) throws SlickException
     {
+      player.render();
+      g.setBackground(new org.newdawn.slick.Color(0, 255, 0));
     }
 }
