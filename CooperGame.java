@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
  */
 public class CooperGame extends BasicGame
 {
+    private InputController inputController;
+    private Player player;
     public CooperGame()
     {
         super("The Legend of Cooper");
@@ -18,7 +20,9 @@ public class CooperGame extends BasicGame
         try
         {
             AppGameContainer app = new AppGameContainer(new CooperGame());
-            app.setDisplayMode(500, 400, false);
+            app.setDisplayMode(1280, 720, false);
+            app.setTargetFrameRate(60);
+            app.setVSync(true);
             app.start();
         }
         catch (SlickException e)
@@ -30,6 +34,8 @@ public class CooperGame extends BasicGame
     @Override
     public void init(GameContainer container) throws SlickException
     {
+      inputController = new InputController();
+      player = new Player(3, 3);
     }
 
     @Override
