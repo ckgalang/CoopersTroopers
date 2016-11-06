@@ -6,18 +6,18 @@ import org.newdawn.slick.SlickException;
 /**
  * @author panos
  */
-public class cooperstroopers extends BasicGame
+public class CooperGame extends BasicGame
 {
-    public cooperstroopers()
+    public CooperGame()
     {
-        super("Wizard game");
+        super("The Legend of Cooper");
     }
 
     public static void main(String[] arguments)
     {
         try
         {
-            AppGameContainer app = new AppGameContainer(new cooperstroopers());
+            AppGameContainer app = new AppGameContainer(new CooperGame());
             app.setDisplayMode(500, 400, false);
             app.start();
         }
