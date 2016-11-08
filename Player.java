@@ -1,18 +1,29 @@
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
+public enum Facing {
+  LEFT, RIGHT
+}
+
 public class Player
 {
   protected float x;
   protected float y;
-  protected Image sprite;
-  protected boolean isTouchingGround;
+  protected Facing facing;
+  protected HashMap sprites;
 
   public Player(float x, float y) throws SlickException
   {
     this.x = x;
     this.y = y;
-    sprite = new Image("sprite.png");
+    facing = Facing.RIGHT;
+    setSprite(new Image(SpriteSheet("Megaman_Sprite.png", int 5, int 10)));
+  }
+  protected void setSprite(Image i)
+  {
+    sprites = new HashMap<Facing, Image>();
+    sprites.put(Facing.RIGHT, i);
+    sprites.put(Facing.LEFT, i.getFlippedCopy(true, false));
   }
   public float getX()
   {
@@ -24,7 +35,7 @@ public class Player
   }
   public void render()
   {
-    sprite.draw(x,y);
+    sprites.get(facing).draw(x,y);
   }
   public void moveLeft(int delta)
   {

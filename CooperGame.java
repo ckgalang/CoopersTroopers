@@ -10,6 +10,7 @@ public class CooperGame extends BasicGame
 {
     private InputController inputController;
     private Player player;
+
     public CooperGame()
     {
         super("The Legend of Cooper");
